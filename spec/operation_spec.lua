@@ -10,5 +10,6 @@ describe("operation", function()
 
 	it("compare", function()
 		assert.True(1 == 1)
+		assert.True(1 == 1.0)
 	end)
 end)
