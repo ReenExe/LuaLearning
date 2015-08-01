@@ -8,4 +8,4 @@ install:
 - sudo apt-get install luarocks
 - sudo luarocks install busted 1.11.1
 script:
-- "busted tests/first.lua"
+- busted
