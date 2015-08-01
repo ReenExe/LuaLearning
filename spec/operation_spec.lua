@@ -5,6 +5,7 @@ describe("operation", function()
 		assert.same(5 * 5, 25)
 		assert.same(5 / 5, 1)
 		assert.same(5 % 3, 2)
+		assert.same(2 ^ 10, 1024)
 
 		assert.same(1e1, 10)
 		assert.same(1E1, 10)
