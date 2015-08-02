@@ -10,6 +10,11 @@ describe("string", function()
         local value = 'value';
         assert.same(#value, 5)
     end)
+  
+    it('concat', function()
+        assert.same(1 .. 1, '11')
+        assert.same('this' .. ' is ' .. 'it', 'this is it')
+    end)
     
     it('long', function()
         local value = [[
