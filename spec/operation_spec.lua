@@ -16,8 +16,10 @@ describe("operation", function()
 		assert.same(-1e-1, -0.1)
 		assert.same(0xF, 15)
 		assert.same(0XF, 15)
-		-- why ?
+    -- 1 * 2 ^ 1  
 		assert.same(0x1p1, 2)
+    -- 1 * 2 ^ 3
+		assert.same(0x1p3, 8)
 	end)
 
 	it("logical", function()
