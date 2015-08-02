@@ -1,6 +1,8 @@
 describe("converting", function()
     it("number", function()
         assert.same(tonumber('1'), 1)
+        assert.same(tonumber('1x'), nil)
+        assert.same(tonumber(''), nil)
     end)
   
     it("string", function()
