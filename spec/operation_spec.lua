@@ -9,6 +9,8 @@ describe("operation", function()
 		assert.same(2 ^ 10, 1024)
 
 		assert.same(1e1, 10)
+		assert.same(.1, 0.1)
+		assert.same(.1e2, 10)
 		assert.same(1E1, 10)
 		assert.same(-1e-1, -0.1)
 		assert.same(0xF, 15)
