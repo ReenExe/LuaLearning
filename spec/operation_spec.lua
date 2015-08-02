@@ -1,6 +1,7 @@
 describe("operation", function()
 	it("math", function() 
 		assert.same(1 + 1, 2)
+		assert.same('1' + '1', 2)
 		assert.same(3 - 2, 1)
 		assert.same(5 * 5, 25)
 		assert.same(5 / 5, 1)
@@ -12,6 +13,8 @@ describe("operation", function()
 		assert.same(-1e-1, -0.1)
 		assert.same(0xF, 15)
 		assert.same(0XF, 15)
+		-- why ?
+		assert.same(0x1p1, 2)
 	end)
 
 	it("logical", function()
