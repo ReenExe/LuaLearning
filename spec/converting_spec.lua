@@ -7,5 +7,8 @@ describe("converting", function()
   
     it("string", function()
         assert.same(tostring(1), '1')
+        assert.same(tostring(false), 'false')
+        assert.same(tostring(true), 'true')
+        assert.same(tostring(nil), 'nil')
     end)
 end)
