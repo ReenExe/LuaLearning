@@ -8,10 +8,24 @@ describe("table", function()
 		assert.True(table["1"] == "one")	
 	end)
 
-	it("id", function()
-		local table = {
-			[1] = 1,
-			[5] = 25,
-		}
-	end)
+  it("id", function()
+    local table = {
+      [1] = 1,
+      [5] = 25,
+      key = 'value',
+    }
+    
+    assert.True(table[1] == 1)
+    assert.True(table[5] == 25)
+    assert.True(table.key == 'value')
+    assert.True(table['key'] == 'value')
+  end)
+
+  it('table as key', function()
+    local table = {}
+
+    assert.True(table[table] == nil)
+    table[table] = true;
+    assert.True(table[table] == true)
+  end)
 end)
