@@ -3,6 +3,12 @@ describe("metatable", function()
     local table = {}
 
     assert.True(getmetatable(table) == nil)
+
+    local metatable = {}
+
+    setmetatable(table, metatable)
+
+    assert.True(getmetatable(table) == metatable)
   end)
 
 	it("simple tostring", function()
@@ -12,7 +18,7 @@ describe("metatable", function()
       end
     }
 
-		local table = {}
+    local table = {}
 
     setmetatable(table, metatable)
 
