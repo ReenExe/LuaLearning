@@ -150,4 +150,21 @@ describe("metatable", function()
     -- how about that?
     assert.True(a < b and a > b)
   end)
+
+  it('index', function()
+      local t = {};
+      local mt = {};
+      
+      setmetatable(t, mt)
+      
+      assert.True(t[1] == nil)
+      
+      mt.__index = function(_, key)
+        -- what first argument?
+        return tonumber(key) * 2;
+      end
+      
+      assert.True(t[1] == 2)
+      assert.True(t[5] == 10)
+  end)
 end)
