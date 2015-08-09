@@ -28,4 +28,11 @@ describe("table", function()
     table[table] = true;
     assert.True(table[table] == true)
   end)
+
+  it('as list', function()
+    local table = {'a', 'b', 'c'}
+    assert.True(table[1] == 'a')
+    assert.True(table[2] == 'b')
+    assert.True(table[3] == 'c')
+  end)
 end)
