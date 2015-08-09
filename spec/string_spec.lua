@@ -38,6 +38,13 @@ describe("string", function()
       assert.True(string.char(65, 66, 67) == 'ABC')
     end)
 
+    it('metatable', function()
+        local mt = getmetatable('')
+        assert.truthy(mt)
+
+        assert.True(getmetatable('a') == getmetatable('b'))
+    end)
+
     it('long', function()
         local value = [[
             <html></html>
