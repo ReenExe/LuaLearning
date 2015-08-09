@@ -38,6 +38,10 @@ describe("string", function()
       assert.True(string.char(65, 66, 67) == 'ABC')
     end)
 
+    it('byte', function()
+        assert.True(string.byte('A') == 65)
+    end)
+
     it('metatable', function()
         local mt = getmetatable('')
         assert.truthy(mt)
