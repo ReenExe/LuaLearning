@@ -18,7 +18,17 @@ describe("string", function()
         assert.same(1 .. 1, '11')
         assert.same('this' .. ' is ' .. 'it', 'this is it')
     end)
-    
+
+    it('case', function()
+        assert.True(string.upper('name') == 'NAME')
+        assert.True(('name'):upper() == 'NAME')
+        assert.True(('NAME'):upper() == 'NAME')
+
+        assert.True(string.lower('NAME') == 'name')
+        assert.True(('NAME'):lower() == 'name')
+        assert.True(('name'):lower() == 'name')
+    end)
+
     it('long', function()
         local value = [[
             <html></html>
