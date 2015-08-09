@@ -104,4 +104,20 @@ describe('metatable index', function()
     assert.True(mt.getName() == 'mt')
     assert.True(t.getName() == 't')
   end)
+
+  it('newindex', function()
+      local a = {}
+      local mt = {}
+      local cache = {}
+
+      mt.__newindex = function(t, k, v)
+        mt[k] = v * v
+      end
+      mt.__index = mt
+
+      setmetatable(a, mt)
+
+      a.key = 3
+      assert.True(a.key == 9)
+  end)
 end)
