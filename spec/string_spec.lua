@@ -29,6 +29,15 @@ describe("string", function()
         assert.True(('name'):lower() == 'name')
     end)
 
+    it('reverse', function()
+        assert.True(string.reverse('abc') == 'cba')
+    end)
+
+    it('char', function()
+      assert.True(string.char(65) == 'A')
+      assert.True(string.char(65, 66, 67) == 'ABC')
+    end)
+
     it('long', function()
         local value = [[
             <html></html>
