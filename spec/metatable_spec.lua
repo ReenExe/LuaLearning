@@ -11,7 +11,7 @@ describe("metatable", function()
     assert.True(getmetatable(table) == metatable)
   end)
 
-	it("simple tostring", function()
+	it('simple tostring', function()
     local metatable = {
       __tostring = function()
         return 'value'
@@ -23,7 +23,22 @@ describe("metatable", function()
     setmetatable(table, metatable)
 
     assert.True(tostring(table) == 'value');
+    
+    assert.True(table.value == nil)
+    table[table] = true
+    assert.True(table.value == nil)
 	end)
+
+  it('add method after set', function()
+    local t = {}
+    local mt = {}
+    setmetatable(t, mt)
+    mt.__tostring = function()
+      return 'value'
+    end
+    
+    assert.False(tostring(table) == 'value');
+  end)
 
   it('compare <', function()
       local mt = {
@@ -151,7 +166,7 @@ describe("metatable", function()
     assert.True(a < b and a > b)
   end)
 
-  it('index', function()
+  it('index function', function()
       local t = {};
       local mt = {};
       
