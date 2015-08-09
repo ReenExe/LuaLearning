@@ -71,6 +71,23 @@ describe("string", function()
         assert.True(('Lua '):rep(3) == 'Lua Lua Lua ')
     end)
 
+    it('find', function()
+        local start, finish = string.find('Hello Lua', 'Lua')
+        assert.True(start == 7 and finish == 9)
+
+        start, finish = string.find('Hello Lua', 'Lapis')
+        assert.True(start == nil and finish == nil)
+
+        start, finish = string.find('Start Lua, Start C', 'Start')
+        assert.True(start == 1 and finish == 5)
+
+        start, finish = string.find('Start Lua, Start C', 'Start', 2) -- start + 1
+        assert.True(start == 12 and finish == 16)
+
+        start, finish = string.find('Start Lua, Start C', 'Start', 16)
+        assert.True(start == nil and finish == nil)
+    end)
+
     it('metatable', function()
         local mt = getmetatable('')
         assert.truthy(mt)
