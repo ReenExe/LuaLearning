@@ -50,6 +50,15 @@ describe("string", function()
 
     it('format', function()
       assert.True(string.format('%d %d %d', 1, 2, 3) == '1 2 3')
+      assert.True(('%d %d %d'):format(1, 2, 3) == '1 2 3')
+    end)
+
+    it('repeat', function()
+        assert.True(string.rep('Lua', 1) == 'Lua')
+        assert.True(string.rep('Lua', '1') == 'Lua')
+        assert.True(string.rep('Lua ', 3) == 'Lua Lua Lua ')
+        assert.True(string.rep('Lua ', '3') == 'Lua Lua Lua ')
+        assert.True(('Lua '):rep(3) == 'Lua Lua Lua ')
     end)
 
     it('metatable', function()
