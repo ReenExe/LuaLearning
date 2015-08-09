@@ -40,6 +40,12 @@ describe("string", function()
 
     it('byte', function()
         assert.True(string.byte('A') == 65)
+        assert.True(string.byte('A', 1) == 65)
+
+        local a, b, c = string.byte('ABC', 1, 3)
+        assert.True(a == 65)
+        assert.True(b == 66)
+        assert.True(c == 67)
     end)
 
     it('metatable', function()
