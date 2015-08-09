@@ -5,7 +5,17 @@ describe("string", function()
         assert.same(first:gsub('first', 'second'), 'second string')
         assert.same(first, 'first string')
     end)
-  
+
+    it('sub', function()
+        assert.True(string.sub('abc', 1) == 'abc')
+        assert.True(string.sub('abc', 1, 3) == 'abc')
+        assert.True(string.sub('abc', 1, 100) == 'abc')
+        assert.True(string.sub('abc', 1, 1) == 'a')
+        assert.True(string.sub('abc', 1, 2) == 'ab')
+        assert.True(string.sub('abc', 2) == 'bc')
+        assert.True(string.sub('abc', 2, 2) == 'b')
+    end)
+
     it('length', function()
         assert.same(#'some value', 10)
         local value = 'value';
