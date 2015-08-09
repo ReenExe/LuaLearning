@@ -48,6 +48,10 @@ describe("string", function()
         assert.True(c == 67)
     end)
 
+    it('format', function()
+      assert.True(string.format('%d %d %d', 1, 2, 3) == '1 2 3')
+    end)
+
     it('metatable', function()
         local mt = getmetatable('')
         assert.truthy(mt)
