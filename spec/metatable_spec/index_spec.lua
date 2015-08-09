@@ -108,7 +108,6 @@ describe('metatable index', function()
   it('newindex', function()
       local a = {}
       local mt = {}
-      local cache = {}
 
       mt.__newindex = function(t, k, v)
         mt[k] = v * v
