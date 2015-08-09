@@ -245,5 +245,30 @@ describe("metatable", function()
     assert.True(mtparent.value == 'mtparent')
     assert.True(mt.value == 'mt')
     assert.True(t.value == 't')
+    
+    -- function
+    mtparent.getName = function()
+      return 'mtparent'
+    end
+
+    assert.True(mtparent.getName() == 'mtparent')
+    assert.True(mt.getName() == 'mtparent')
+    assert.True(t.getName() == 'mtparent')
+    
+    mt.getName = function()
+      return 'mt'
+    end
+    
+    assert.True(mtparent.getName() == 'mtparent')
+    assert.True(mt.getName() == 'mt')
+    assert.True(t.getName() == 'mt')
+    
+    t.getName = function()
+      return 't'
+    end
+    
+    assert.True(mtparent.getName() == 'mtparent')
+    assert.True(mt.getName() == 'mt')
+    assert.True(t.getName() == 't')
   end)
 end)
