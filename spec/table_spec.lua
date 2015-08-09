@@ -34,5 +34,22 @@ describe("table", function()
     assert.True(table[1] == 'a')
     assert.True(table[2] == 'b')
     assert.True(table[3] == 'c')
+    assert.True(#table == 3)
+  end)
+
+  it('as stack', function()
+      local t = {}
+
+      table.insert(t, 'a');
+      assert.True(t[1] == 'a')
+
+      table.insert(t, 'b');
+      assert.True(t[2] == 'b')
+
+      assert.True(#t == 2)
+
+      assert.True(table.remove(t) == 'b')
+      assert.True(table.remove(t) == 'a')
+      assert.True(#t == 0)
   end)
 end)
