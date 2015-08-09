@@ -167,21 +167,25 @@ describe("metatable", function()
   end)
 
   it('index function', function()
-      local t = {};
-      local mt = {};
-      
-      setmetatable(t, mt)
-      
-      assert.True(t[1] == nil)
-      
-      mt.__index = function(_, key)
-      
-        assert.True(_ == t)
-      
-        return tonumber(key) * 2;
-      end
-      
-      assert.True(t[1] == 2)
-      assert.True(t[5] == 10)
+    local t = {};
+    local mt = {};
+    
+    setmetatable(t, mt)
+    
+    assert.True(t[1] == nil)
+
+    mt.__index = function(_, key)
+    
+      assert.True(_ == t)
+    
+      return tonumber(key) * 2
+    end
+    
+    assert.True(t[1] == 2)
+    assert.True(t[5] == 10)
+    
+    t[1] = 8
+    assert.True(t[1] == 8)
+    assert.True(t[5] == 10)
   end)
 end)
