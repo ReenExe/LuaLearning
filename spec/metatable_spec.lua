@@ -175,7 +175,9 @@ describe("metatable", function()
       assert.True(t[1] == nil)
       
       mt.__index = function(_, key)
-        -- what first argument?
+      
+        assert.True(_ == t)
+      
         return tonumber(key) * 2;
       end
       
