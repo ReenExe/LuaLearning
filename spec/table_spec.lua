@@ -1,12 +1,17 @@
 describe("table", function()
-	it("key", function()
-		local table = {}
-		table[1] = 1
-		table["1"] = "one"
+    it("key", function()
+        local table = {}
+        table[1] = 1
+        table["1"] = "one"
 
-		assert.True(table[1] == 1)	
-		assert.True(table["1"] == "one")	
-	end)
+        assert.True(table[1] == 1)
+        assert.True(table["1"] == "one")
+    end)
+
+    it('equal', function()
+        assert.same({}, {})
+        assert.same({a = 1, b = 2}, {b = 2, a = 1})
+    end)
 
   it("id", function()
     local table = {
