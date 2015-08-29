@@ -23,7 +23,7 @@ describe("string", function()
         assert.same(value:len(), 5)
         assert.same(string.len(value), 5)
     end)
-  
+
     it('concat', function()
         assert.same(1 .. 1, '11')
         assert.same('this' .. ' is ' .. 'it', 'this is it')
@@ -44,8 +44,8 @@ describe("string", function()
     end)
 
     it('char', function()
-      assert.True(string.char(65) == 'A')
-      assert.True(string.char(65, 66, 67) == 'ABC')
+        assert.True(string.char(65) == 'A')
+        assert.True(string.char(65, 66, 67) == 'ABC')
     end)
 
     it('byte', function()
@@ -59,8 +59,8 @@ describe("string", function()
     end)
 
     it('format', function()
-      assert.True(string.format('%d %d %d', 1, 2, 3) == '1 2 3')
-      assert.True(('%d %d %d'):format(1, 2, 3) == '1 2 3')
+        assert.True(string.format('%d %d %d', 1, 2, 3) == '1 2 3')
+        assert.True(('%d %d %d'):format(1, 2, 3) == '1 2 3')
     end)
 
     it('repeat', function()

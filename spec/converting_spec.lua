@@ -4,7 +4,7 @@ describe("converting", function()
         assert.same(tonumber('1x'), nil)
         assert.same(tonumber(''), nil)
     end)
-  
+
     it("string", function()
         assert.same(tostring(1), '1')
         assert.same(tostring(false), 'false')
