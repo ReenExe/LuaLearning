@@ -8,6 +8,27 @@ local function httpBuildQuery(map)
     return table.concat(keyValueList, "&")
 end
 
+-- http://stackoverflow.com/questions/1426954/split-string-in-lua
+-- http://lua-users.org/wiki/SplitJoin -- Compatibility: Lua-5.0
+local function explode(delimeter, source)
+    -- Eliminate bad cases...
+    if string.find(source, delimeter) == nil then
+        return { source }
+    end
+    local result = {}
+    local pattern = "(.-)" .. delimeter .. "()"
+    local lastPos
+    for part, pos in string.gfind(source, pattern) do
+        table.insert(result, part)
+        lastPos = pos
+    end
+    -- Handle the last field
+    if lastPos then
+        table.insert(result, string.sub(source, lastPos))
+    end
+    return result
+end
+
 local function getQueryFilterKey(getParameters, cookieParameters)
     local function getCookie(key)
         return cookieParameters['cookie_' .. key]
@@ -23,11 +44,6 @@ local function getQueryFilterKey(getParameters, cookieParameters)
         end
 
         return 1
-    end
-
-    local function explode(separator, value)
-        -- TODO
-        return {}
     end
 
     local result = {
@@ -52,7 +68,14 @@ end
 
 describe('query filter key', function()
     it('http build query',function()
-        assert.same(httpBuildQuery{a=1}, 'a=1')
+        assert.same(httpBuildQuery{}, '')
+        assert.same(httpBuildQuery{a = 1}, 'a=1')
+        assert.same(httpBuildQuery{a = 1, b = 2}, 'a=1&b=2')
+    end)
+
+    it('explode', function()
+        assert.same(explode(',', ''), {''})
+        assert.same(explode(',', '1,2'), {'1', '2'})
     end)
 
     it('do', function()
