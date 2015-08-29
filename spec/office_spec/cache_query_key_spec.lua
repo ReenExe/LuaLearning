@@ -58,6 +58,7 @@ local function getQueryFilterKey(getParameters, cookieParameters)
             local aliases = explode(',', getParameters[key])
             if (#aliases > 0) then
                 table.sort(aliases)
+                -- attention вставка відрізняється від PHP
                 result[key] = table.concat(aliases, ',')
             end
         end
@@ -71,6 +72,8 @@ describe('query filter key', function()
         assert.same(httpBuildQuery{}, '')
         assert.same(httpBuildQuery{a = 1}, 'a=1')
         assert.same(httpBuildQuery{a = 1, b = 2}, 'a=1&b=2')
+        -- attention
+        assert.same(httpBuildQuery{b = 1, a = 2}, 'a=2&b=1')
     end)
 
     it('explode', function()
@@ -80,5 +83,7 @@ describe('query filter key', function()
 
     it('do', function()
         assert.same(getQueryFilterKey({}, {}), '?page=1&sort=views')
+        -- attention
+        assert.same(getQueryFilterKey({a = '1'}, {}), '?a=1&sort=views&page=1')
     end)
 end)
