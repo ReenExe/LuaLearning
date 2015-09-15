@@ -28,7 +28,7 @@ local function getQueryFilterKey(getParameters, cookieParameters)
     for i = 1, #getKeys do
         local key = getKeys[i]
         local value = getParameters[key]
-        if value and value ~= '' then
+        if value and value ~= '' and type(value) == 'string' then
             push(key, value)
         end
     end
@@ -42,6 +42,7 @@ describe('query filter key', function()
 
         assert.same(getQueryFilterKey({a = '1'}, {}), '?page=1&sort=views&a=1')
         assert.same(getQueryFilterKey({a = '1', b = ''}, {}), '?page=1&sort=views&a=1')
+        assert.same(getQueryFilterKey({a = '1', b = {'a'}}, {}), '?page=1&sort=views&a=1')
         assert.same(getQueryFilterKey({a = '1', b = 'a,b'}, {}), '?page=1&sort=views&b=a,b&a=1')
 
         assert.same(getQueryFilterKey({b = 'puma'}, {}), '?page=1&sort=views&b=puma')
