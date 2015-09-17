@@ -21,8 +21,13 @@ local function getQueryFilterKey(getParameters, cookieParameters)
         return 1
     end
 
+    local sort = getCookie('sort')
+    if (type(value) ~= 'string') then
+        sort = 'views';
+    end
+
     push('page', getPage())
-    push('sort', getCookie('sort') or 'views')
+    push('sort', sort)
 
     local getKeys = { 't', 's', 'b', 'o', 'a', 'm', 'r', 'p' }
     for i = 1, #getKeys do
@@ -48,6 +53,8 @@ describe('query filter key', function()
         assert.same(getQueryFilterKey({s = '3,5L,S-M,96(164-170),M-L(46-48)'}, {}), '?page=1&sort=views&s=3,5L,S-M,96(164-170),M-L(46-48)')
 
         assert.same(getQueryFilterKey({b = 'puma'}, {}), '?page=1&sort=views&b=puma')
+        assert.same(getQueryFilterKey({b = 'puma'}, {sort = 'prices'}), '?page=1&sort=prices&b=puma')
+        assert.same(getQueryFilterKey({b = 'puma'}, {sort = {'prices'}}), '?page=1&sort=views&b=puma')
         assert.same(getQueryFilterKey({b = 'puma', page = 3}, {}), '?page=3&sort=views&b=puma')
         assert.same(getQueryFilterKey({b = 'puma', page = 3}, {cookie_sort = 'zprice'}), '?page=3&sort=zprice&b=puma')
     end)
