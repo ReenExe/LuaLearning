@@ -24,7 +24,7 @@ local function getQueryFilterKey(getParameters, cookieParameters)
     push('page', getPage())
     push('sort', getCookie('sort') or 'views')
 
-    local getKeys = { 's', 'b', 'o', 'a', 'm', 'r', 'p' }
+    local getKeys = { 't', 's', 'b', 'o', 'a', 'm', 'r', 'p' }
     for i = 1, #getKeys do
         local key = getKeys[i]
         local value = getParameters[key]
