@@ -22,7 +22,7 @@ local function getQueryFilterKey(getParameters, cookieParameters)
     end
 
     local sort = getCookie('sort')
-    if (type(value) ~= 'string') then
+    if (type(sort) ~= 'string') then
         sort = 'views';
     end
 
