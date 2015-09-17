@@ -44,6 +44,8 @@ describe('query filter key', function()
         assert.same(getQueryFilterKey({a = '1', b = ''}, {}), '?page=1&sort=views&a=1')
         assert.same(getQueryFilterKey({a = '1', b = {'a'}}, {}), '?page=1&sort=views&a=1')
         assert.same(getQueryFilterKey({a = '1', b = 'a,b'}, {}), '?page=1&sort=views&b=a,b&a=1')
+        
+        assert.same(getQueryFilterKey({s = '3,5L,S-M,96(164-170),M-L(46-48)'}, {}), '?page=1&sort=views&s=3,5L,S-M,96(164-170),M-L(46-48)')
 
         assert.same(getQueryFilterKey({b = 'puma'}, {}), '?page=1&sort=views&b=puma')
         assert.same(getQueryFilterKey({b = 'puma', page = 3}, {}), '?page=3&sort=views&b=puma')
