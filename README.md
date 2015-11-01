@@ -1,5 +1,5 @@
 # LuaLearning
 
-[![Build Status](https://travis-ci.org/ReenExe/LuaLearning.svg)](https://travis-ci.org/ReenExe/LuaLearning)
+[![Build Status](https://travis-ci.org/ReenExeStudyTools/LuaLearning.svg)](https://travis-ci.org/ReenExeStudyTools/LuaLearning)
 
 
